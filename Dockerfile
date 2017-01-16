@@ -1,15 +1,14 @@
-FROM ubuntu:16.04
+FROM openjdk:8-jdk-alpine
 
 EXPOSE 8080
+ARG JAR
 
-RUN apt-get update
-RUN apt-get install software-properties-common -y
-RUN add-apt-repository ppa:webupd8team/java -y
-RUN apt-get update
+RUN mkdir -p /opt/service/logs
+VOLUME ["/opt/service/logs"]
 
-RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-RUN apt-get install oracle-java8-installer -y
-RUN apt-get install oracle-java8-set-default
+ADD $JAR /opt/service/
+ADD start-service.sh /opt/service/
+ADD log.properties /opt/service/
 
-RUN mkdir /var/log/server
-VOLUME ["/var/log/server"]
+ENTRYPOINT ["/opt/service/start-service.sh"]
+CMD ["-p", "8080", "-n"]
