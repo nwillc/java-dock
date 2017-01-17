@@ -3,6 +3,9 @@ FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 ARG JAR
 
+RUN apk update
+RUN apk add bash
+
 RUN mkdir -p /opt/service/logs
 VOLUME ["/opt/service/logs"]
 
