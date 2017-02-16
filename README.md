@@ -1,13 +1,13 @@
 
 # java-dock
 
-A docker Dockerfile designed to run a single jar file in a simple and controllable manner.
+A Dockerfile designed to run a single jar file in a simple and controllable manner. Also
+provided are some scripts to work with the Dockerfile.
 
 ## Employs
 
-- Alpine Linux to keep small
-- Java 8
-- Tini script starter
+- [Alpine Linux and Oracle JDK 8](https://hub.docker.com/r/anapsix/alpine-java/)
+- [Tini](https://github.com/krallin/tini) a tiny init replacement
 
 ## Exposes
 
