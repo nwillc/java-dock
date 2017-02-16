@@ -1,2 +1,2 @@
-IMAGE="nwillc/java-dock"
+[ -z "${IMAGE}" ] && IMAGE="nwillc/java-dock"
 CONTAINER=${IMAGE##*/}
