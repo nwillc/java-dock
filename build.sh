@@ -10,8 +10,9 @@ FILE=${CONTAINER}.tar
 rm -rf ${FILE} ${FILE}.bz2
 
 echo -n "Building ${IMAGE}..."
-docker build -t ${IMAGE} --build-arg JAR=${JAR} .
-echo -n "Saving to ${FILE}..."
-docker save -o ${FILE} ${IMAGE}
-echo "Compressing."
-bzip2 ${FILE}
+docker build -t ${IMAGE} --build-arg JAR=${JAR} --build-arg http_proxy=${http_proxy} .
+# echo -n "Saving to ${FILE}..."
+# docker save -o ${FILE} ${IMAGE}
+# echo -n "Compressing..."
+# bzip2 ${FILE}
+echo "done."
