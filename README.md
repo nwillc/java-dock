@@ -13,3 +13,14 @@ provided are some scripts to work with the Dockerfile.
 
 - Port 8080 from inside the container
 - A log folder
+
+## Registrator Integration
+
+If you are running Registrator the environment variables in the run.sh will create a service entry that can
+be queried with DNS:
+
+```bash
+dig @localhost -p 8600 java-dock.service.consul
+# Or better...
+dig @localhost -p 8600 _java-dock._rest.service.consul SRV
+```
