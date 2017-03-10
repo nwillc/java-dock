@@ -8,6 +8,6 @@ cd ${SCRIPT_DIR}
 mkdir logs 2> /dev/null
 
 docker run -d --name ${CONTAINER} -v $(pwd)/logs:/opt/service/logs -p ${PORT}:${PORT} \
-    -e SERVICE_8080_NAME=${CONTAINER} -e SERVICE_8080_ID=${CONTAINER} -e SERVICE_TAGS=dev,rest \
+    -e SERVICE_${PORT}_NAME=${CONTAINER} -e SERVICE_${PORT}_ID=${CONTAINER} -e SERVICE_TAGS=${ENV} \
     ${IMAGE}
 
