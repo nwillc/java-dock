@@ -1,7 +1,9 @@
 FROM anapsix/alpine-java:8
 
-EXPOSE 8080
+ARG PORT
 ARG JAR
+
+EXPOSE $PORT
 
 RUN apk update
 RUN apk add tini
@@ -14,5 +16,5 @@ ADD start-service.sh /opt/service/
 ADD log.properties /opt/service/
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["/opt/service/start-service.sh", "-p", "8080", "-n"]
+CMD ["/opt/service/start-service.sh", "-p", $PORT, "-n"]
 
